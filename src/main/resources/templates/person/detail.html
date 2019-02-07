@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+
+<body>
+<div th:replace="fragments/header :: header"/>
+<h1 th:text="${person.surname} + ' ' + ${person.givenname}">Prenom Nom (De l'acteur)</h1>
+
+
+<tr>
+    <td>
+        <img style="width: 200px; height: 200px; background-color: rgba(0,0,255,0.1);" th:src="@{/person/images/{id}(id=${person.getId()})}">
+    </td>
+
+    <td th:text="${person.birthday}">Date de naissance</td>
+</tr>
+<br />
+
+
+<h2>Filmographie</h2>
+<ul>
+
+    <li th:each="role:${person.getRoles()}">
+        <!--<a th:text="${role.getActor().getGivenname()} + ' joue le rôle de ' + ${role.getFilm().getTitle()}"
+           th:href="@{/film/detail/{id}(id=${role.getFilm().getId()})}">
+            film
+        </a>-->
+        <a th:text="${role.getFilm().getTitle()}"
+           th:href="@{/film/detail/{id}(id=${role.getFilm().getId()})}">Film</a>
+    </li>
+</ul>
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+
+</html>
+
+
+
+

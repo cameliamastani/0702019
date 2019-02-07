@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:fragment="header-css">
+        <!-- this is header-static -->
+        <!--<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"-->
+              <!--href="/webjars/bootstrap/4.1.3/css/bootstrap.css"/>-->
+        <!--<link rel="stylesheet" th:href="@{/css/jumbotron.css}"-->
+              <!--href="/static/css/jumbotron.css"/>-->
+
+        <link rel="stylesheet" href="webjars/Semantic-UI/2.4.1/semantic.min.css"
+              th:href="@{/webjars/Semantic-UI/2.4.1/semantic.min.css}"/>
+        <link rel="stylesheet" th:href="@{/css/cinema.css}"
+              href="/static/css/cinema.css"/>
+        <title th:text="${title ?: 'Cinema'}"></title>
+        <link rel="icon" href="favicon.ico" th:href="@{/css/favicon.ico}" />
+
+        <style type="text/css">
+
+            .hidden.menu {
+                display: none;
+            }
+
+            .masthead.segment {
+                min-height: 700px;
+                padding: 1em 0em;
+            }
+            .masthead .logo.item img {
+                margin-right: 1em;
+            }
+            .masthead .ui.menu .ui.button {
+                margin-left: 0.5em;
+            }
+            .masthead h1.ui.header {
+                margin-top: 3em;
+                margin-bottom: 0em;
+                font-size: 4em;
+                font-weight: normal;
+            }
+            .masthead h2 {
+                font-size: 1.7em;
+                font-weight: normal;
+            }
+
+            .ui.vertical.stripe {
+                padding: 8em 0em;
+            }
+            .ui.vertical.stripe h3 {
+                font-size: 2em;
+            }
+            .ui.vertical.stripe .button + h3,
+            .ui.vertical.stripe p + h3 {
+                margin-top: 3em;
+            }
+            .ui.vertical.stripe .floated.image {
+                clear: both;
+            }
+            .ui.vertical.stripe p {
+                font-size: 1.33em;
+            }
+            .ui.vertical.stripe .horizontal.divider {
+                margin: 3em 0em;
+            }
+
+            .quote.stripe.segment {
+                padding: 0em;
+            }
+            .quote.stripe.segment .grid .column {
+                padding-top: 5em;
+                padding-bottom: 5em;
+            }
+
+            .footer.segment {
+                padding: 5em 0em;
+            }
+
+            .secondary.pointing.menu .toc.item {
+                display: none;
+            }
+
+            @media only screen and (max-width: 700px) {
+                .ui.fixed.menu {
+                    display: none !important;
+                }
+                .secondary.pointing.menu .item,
+                .secondary.pointing.menu .menu {
+                    display: none;
+                }
+                .secondary.pointing.menu .toc.item {
+                    display: block;
+                }
+                .masthead.segment {
+                    min-height: 350px;
+                }
+                .masthead h1.ui.header {
+                    font-size: 2em;
+                    margin-top: 1.5em;
+                }
+                .masthead h2 {
+                    margin-top: 0.5em;
+                    font-size: 1.5em;
+                }
+            }
+
+
+        </style>
+
+
+    </th:block>
+</head>
+
+<body>
+<div th:fragment="header">
+<!--<div th:fragment="header">
+   <header>
+       <a th:href="@{/}">Retour à la liste des films</a>
+       <p> camelia  2018-2019</p>
+
+   </header>
+</div>
+</div>
+-->
+    <!--<nav th:fragment="menu" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">-->
+        <!--<a class="navbar-brand" href="#">cinema</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault" >
+            <ul class="navbar-nav mr-auto" >
+                <li class="nav-item active" >
+                    <a class="nav-link"  th:href="@{~/}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+
+                    <a class="nav-link" th:href="@{'/film/add/'}">Ajouter un film</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>-->
+
+        <!-- Following Menu -->
+        <div class="ui large top fixed hidden menu">
+            <div class="ui container">
+                <a class="active item" th:href="@{/}" >Accueil</a>
+                <a class="item">Work</a>
+                <a class="item">Company</a>
+                <a class="item">Careers</a>
+                <div class="right menu">
+                    <div class="item">
+                        <a class="ui button">Log in</a>
+                    </div>
+                    <div class="item">
+                        <a class="ui primary button">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Sidebar Menu -->
+    <div class="ui vertical inverted sidebar menu">
+
+        <a class="active item" th:href="@{/}">Accueil</a>
+
+        <div class="item">
+            <div class="header">Film</div>
+            <div class="menu">
+                <a class="item" th:href="@{/film/list}" >Liste des films</a>
+                <a class="item" th:href="@{/film/add}">Ajouter un film</a>
+            </div>
+        </div>
+
+
+        <div class="item">
+            <div class="header">Personnes</div>
+            <div class="menu">
+                <a class="item" th:href="@{/person/list}">Liste des personnes</a>
+                <a class="item" th:href="@{/person/add}">Ajouter une personne</a>
+            </div>
+        </div>
+
+        <a class="item" th:href="@{/genre}" >Genres</a>
+
+    </div>
+
+
+    <div class="ui inverted vertical center aligned segment mastheadbis">
+
+
+            <div class="ui container">
+                <div class="ui large secondary inverted pointing menu">
+                    <a class="toc item">
+                        <i class="sidebar icon"></i>
+                    </a>
+                    <a class="active item" th:href="@{/}">Accueil</a>
+
+                    <div class="ui dropdown item">
+                        Films
+                        <div class="menu">
+                            <a class="item" th:href="@{/film/list}">Liste des films</a>
+                            <a class="item" th:href="@{/film/add}">Ajouter un film</a>
+                        </div>
+                    </div>
+
+                    <div class="ui dropdown item">
+                        Personnes
+                        <div class="menu">
+                            <a class="item" th:href="@{/person/list}">Liste des personnes</a>
+                            <a class="item" th:href="@{/person/add}">Ajouter une personne</a>
+                        </div>
+                    </div>
+
+                    <a class="item">Genres</a>
+
+
+                    <div class="right item">
+                     <a class="ui inverted button">Log in</a>
+                        <a class="ui inverted button">Sign Up</a>
+                    </div>
+
+              </div>
+            </div>
+    </div>
+    <!--</nav>-->
+</div>
+</body>
+</html>

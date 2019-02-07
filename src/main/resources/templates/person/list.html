@@ -1,0 +1,85 @@
+<!--
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<table>
+
+  <tr th:each="person:${persons}">
+      <td><span th:utext="${person.surname}"></span> <a href="#" th:href="@{'/person/detailacteur/'+${person.id}}">detail</a> </td>
+  </tr>
+</table>
+
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <th:block th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+<!-- <h1 th:text="'Bonjour ' + ${nom}">Hello CDA</h1>-->
+
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <!--
+      <div class="container">
+
+          <p> Voici les listes des films</p>
+
+
+                   <ul>
+                       <li th:each="film : ${films}">
+                           <a th:text="${film.title}" th:href="@{/film/detail/{id}(id=${film.getId()})}" >Le grand film</a>
+                       </li>
+                   </ul>
+
+          <p><a class="btn btn-primary btn-lg" th:href="'film/list/'" role="button">films &raquo;</a></p>
+      </div>
+  </div>
+     -->
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4" th:each="person:${persons}">
+                    <h2 th:text="${person.givenname}">titre</h2>
+                    <p th:text="${person.surname}"> </p>
+                    <p th:text="${person.birthday}"> </p>
+                    <img  style="width: 200px; height: 200px; background-color: rgba(0,0,255,0.1);" th:src="@{/person/images/{id}(id=${person.getId()})}">
+                    <p><a class="btn btn-secondary" th:href="@{/person/detail/{id}(id=${person.getId()})}"  role="button">Détail De personne &raquo;</a></p>
+                    <p><a class="btn btn-warning btn-sm" th:href="@{'/person/mod/' + ${person.id}}">Modifier</a></p>
+
+
+                </div>
+
+            </div>
+
+
+        </div> <!-- /container -->
+    </div>
+    </div>
+</main>
+
+
+
+
+<div th:replace="fragments/footer :: footer"/>
+
+
+
+
+
+</body>
+</html>

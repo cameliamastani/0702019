@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <th:block th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<form action="#" th:action="@{/film/add}" th:object="${film}" enctype="multipart/form-data" method="post">
+
+    <input type="hidden" th:field="*{id}"/>
+    <input type="hidden" th:field="*{imagePath}"/>
+
+    <p>Titre : <input type="text" th:field="*{title}"/></p>
+
+    <!--<select th:each="">-->
+        <!--<option th:value="">Genre</option>-->
+    <!--</select>-->
+
+    <select>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+    </select>
+
+    <p>Affiche : <input type="file" name="photo"/> <span th:text="*{imagePath}">Fichier photo</span></p>
+
+    <input type="submit" value="Valider" />
+</form>
+
+</body>
+</html>

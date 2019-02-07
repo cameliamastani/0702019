@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <th:block th:replace="fragments/header :: header-css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+<h1>Détail</h1>
+<h2>Titre : <span th:text="${film.title}"></span></h2>
+<h2>Note : <span th:text="${film.summary}"></span></h2>
+<!--<h3 th:text="'Réalisateur : ' + ${film.getDirector().getGivenname()} + ', '-->
+                                        <!--+ ${film.getDirector(). getSurname()}">-->
+<!--</h3>-->
+
+
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+
+        <p> Voici la Réalisateurs </p>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4" th:each="film : ${film}">
+                    <h3 th:text=" ${film.getDirector().getGivenname()} + ', ' + ${film.getDirector(). getSurname()}">
+
+                    </h3>
+
+                    <p><a class="btn btn-secondary" th:href="@{/person/detail/{id}(id=${film.director.id}) }"  role="button">Détail Réalisateur&raquo;</a></p>
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+        </div> <!-- /container -->
+    </div>
+    </div>
+</main>
+
+
+
+
+
+
+
+
+
+
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+
+        <p> Voici la liste des acteurs qui ont joué dans ce film </p>
+        <div class="container">
+
+            <div class="row">
+                <ul>
+
+                <div class="col-md-4"  th:each="roles: ${film.roles}">
+                    <span th:each="i : ${#numbers.sequence( 1, roles.rank)}"  class="fa fa-star checked"></span>
+                    <span th:text=" ${roles.actor.surname} + ' ' + ${film.getDirector(). getSurname()} + ' joue le' + ${roles.rank}+ 'éme role dans ce film'"></span>
+                    <!--<h2 th:text="${roles.actor.surname}">titre</h2>-->
+                    <p><a class="btn btn-secondary" th:href="@{/person/detail/{id}(id=${roles.actor.id}) }"  role="button">Détail D'acteur &raquo;</a></p>
+
+                </div>
+
+                </ul>
+
+            </div>
+
+
+        </div> <!-- /container -->
+    </div>
+    </div>
+</main>
+
+
+<div th:replace="fragments/footer :: footer"/> </div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <th:block th:replace="fragments/header :: header-css"/>
+    <!-- Font Awesome Icon Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+<!-- <h1 th:text="'Bonjour ' + ${nom}">Hello CDA</h1>-->
+
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <!--
+      <div class="container">
+
+          <p> Voici les listes des films</p>
+
+
+                   <ul>
+                       <li th:each="film : ${films}">
+                           <a th:text="${film.title}" th:href="@{/film/detail/{id}(id=${film.getId()})}" >Le grand film</a>
+                       </li>
+                   </ul>
+
+          <p><a class="btn btn-primary btn-lg" th:href="'film/list/'" role="button">films &raquo;</a></p>
+      </div>
+  </div>
+     -->
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4" th:each="film : ${films}">
+                    <h2 th:text="${film.title}">titre</h2>
+
+                    <span th:each="i : ${#numbers.sequence( 1, film.rating)}" class="fa fa-star checked"></span>
+                    <span th:text="( ${film.rating} )"></span>
+
+                    <!--<script th:inline="javascript">-->
+                        <!--var i;-->
+                        <!--for (i = 0; i < 4; i++) {-->
+
+                            <!--i + "<span class=\"fa fa-star checked\" >test</span>";-->
+                        <!--}-->
+                    <!--</script>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <img   class="img-fluid" alt="Responsive image"  style="width: 400px; height: 400px; background-color: rgba(0,0,255,0.1);"th:src="@{/film/images/{id}(id=${film.getId()}) }">
+                    <p><a class="btn btn-secondary" th:href="@{/film/detail/{id}(id=${film.getId()})}"  role="button">Détail De Film &raquo;</a></p>
+                    <p><a class="btn btn-warning btn-sm"
+                          th:href="@{'/film/mod/' + ${film.id}}">Modifier</a></p>
+                    <p> <a class="btn btn-warning btn-sm" th:href="@{'/film/delete/' +  ${film.id}}">Suprimer</a></p>
+
+                </div>
+
+            </div>
+
+
+        </div> <!-- /container -->
+    </div>
+    </div>
+</main>
+
+
+
+
+<div th:replace="fragments/footer :: footer"/>
+
+
+
+
+
+</body>
+</html>
